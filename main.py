@@ -1,4 +1,3 @@
-# pos_hmm_pipeline.py
 # ------------------------------------------------------------
 # Part-of-speech tagging with Bigram/Trigram HMMs on Penn Treebank
 # - Trains on NLTK's treebank tagged sentences
@@ -20,9 +19,6 @@ except LookupError:
     nltk.download("treebank")
     from nltk.corpus import treebank
 
-# -------------------------------
-# Utilities
-# -------------------------------
 
 START = "<s>"
 START2 = "<s2>"   # second start symbol (for trigram)
@@ -109,9 +105,7 @@ class BaseHMMTagger:
         return correct / total if total else 0.0
 
 
-# -------------------------------
 # Bigram HMM Tagger
-# -------------------------------
 
 class BigramHMMTagger(BaseHMMTagger):
     def __init__(self, alpha_emiss: float = 1.0, alpha_trans: float = 0.1):
@@ -210,9 +204,7 @@ class BigramHMMTagger(BaseHMMTagger):
         return list(zip(sent, tags_out))
 
 
-# -------------------------------
 # Trigram HMM Tagger (2nd-order)
-# -------------------------------
 
 class TrigramHMMTagger(BaseHMMTagger):
     def __init__(self, alpha_emiss: float = 1.0, alpha_trans: float = 0.1):
